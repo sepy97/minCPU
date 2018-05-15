@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\begin{document}
+
+\section{Задача оптимизации скорости процесса при заданном расписании задач}
+
+$\min W$, где $W = \sum \limits_{i=0}^{T-1} \alpha + \beta x_i + \gamma x_i^2$, $x_i$ - скорость процессора в момент времени i\\
+
+s.t. $S_{min} \le x_i \le S_{max}$\\
+
+$|x_i-x_{i-1}| \le R ~~ \forall i = 1 \dots T-1$, где T - суммарное время работы процессора \\
+
+Модуль можно записать как два ограничения: \\
+
+$x_i-x_{i-1} \le R ~~ \forall i = 1 \dots T-1$\\
+$-x_i+x_{i-1} \le R ~~ \forall i = 1 \dots T-1$\\
+
+$r_{ij}$ - ресурсы, расходуемые на i-м промежутке времени на j-м процессе\\
+
+$x_i = \sum \limits_{j=0}^{n-1} r_{ij}\delta_{ij}$, $n$ - число задач, $\delta_{ij}$ - элементы матрицы доступности процессов (доступен ли j-ый процесс в i-ый момент времени)\\
+
+$\sum \limits_{i=0}^{T-1} r_{ij}\delta_{ij} \ge z_j$, где $z_j$ - работа, которую надо затратить для j-го процесса\\
+\\
+\\
+
+
+\underline{Формально:}\\
+Вычислить до постановки задачи: \\
+$$x_i = \sum\limits_j N_{ij}$$
+$$y_j = \sum\limits_i N_{ij}$$
+$$x^* = (x_1, \dots, x_{15})$$
+$$x_* = (x_0, \dots, x_{14})$$
+
+Получаем задачу:\\
+$\min \alpha T + \mathbf{\beta^{\top}x} + \gamma \mathbf{x^{\top}x}$\\
+s.t. $\mathbf{x}-\mathbf{S_{min}} \succeq 0$\\
+$\mathbf{S_{max}}-\mathbf{x} \succeq 0$\\
+$\mathbf{x^*} - \mathbf{x_*} \preceq \mathbf{R}$\\
+$\mathbf{x_*} - \mathbf{x^*} \preceq \mathbf{R}$\\
+$\mathbf{y} \succeq \mathbf{z}$\\
+
+Решаем барьерным методом (логарифмический барьер), 
+полученную задачу без ограничений засовываем в градиентный метод.
+
+
+\end{document}
