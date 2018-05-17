@@ -94,21 +94,15 @@ $\mathbf{y} \succeq \mathbf{W}$, где $y_j = \sum\limits_i X_{ij}$\\
 
 Также была оценена зависимость точности вычисления от числа итераций:\\
 
-\begin{figure}[h]
-\begin{center}
-\begin{minipage}[h]{8cm}
-\includegraphics[width=8cm]{ECOS_1.png}
-\caption{ECOS} %% подпись к рисунку
-\label{ris:experimoriginal} %% метка рисунка для ссылки на него
-\end{minipage}
-\hfill 
-\begin{minipage}[h]{8cm}
-\includegraphics[width=8cm]{SCS_1.png}
-\caption{SCS}
-\label{ris:experimcoded}
-\end{minipage}
-\end{center}
-\end{figure}
+\includegraphics[width=12cm]{cmp.jpg}
+
+И время исполнения итерации у ECOS: 
+
+110 ms $\pm$ 572 $\mu$s per loop (mean $\pm$ std. dev. of 7 runs, 10 loops each)
+
+И у SCS:
+
+129 ms $\pm$ 750 $\mu$s per loop (mean $\pm$ std. dev. of 7 runs, 10 loops each)
 
 Получили, что ECOS нужно сделать гораздо меньше итераций, чем SCS для достижения опеределенной точности, эти итерации работают примерно одинаковое (по порядку) количество времени, то есть по времени выгоднее пользоваться ECOS (метод внутренней точки).
 
